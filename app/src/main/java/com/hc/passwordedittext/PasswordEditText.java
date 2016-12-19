@@ -19,20 +19,26 @@ import android.widget.EditText;
  */
 
 public class PasswordEditText extends EditText {
+    // 画笔
     private Paint mPaint;
+    // 一个密码所占的宽度
     private int mPasswordItemWidth;
+    // 密码的个数默认为6位数
     private int mPasswordNumber = 6;
-    // 背景
+    // 背景边框颜色
     private int mBgColor = Color.parseColor("#d1d2d6");
+    // 背景边框大小
     private int mBgSize = 1;
+    // 背景边框圆角大小
     private int mBgCorner = 0;
-    // 分割线
+    // 分割线的颜色
     private int mDivisionLineColor = mBgColor;
+    // 分割线的大小
     private int mDivisionLineSize = 1;
-    //密码
+    // 密码圆点的颜色
     private int mPasswordColor = mDivisionLineColor;
+    // 密码圆点的半径大小
     private int mPasswordRadius = 4;
-
     private PasswordFullListener mListener;
 
     public PasswordEditText(Context context) {
@@ -43,10 +49,15 @@ public class PasswordEditText extends EditText {
         super(context, attrs);
         initPaint();
         initAttributeSet(context, attrs);
+        // 设置输入模式是密码
         setInputType(EditorInfo.TYPE_TEXT_VARIATION_PASSWORD);
+        // 不显示光标
         setCursorVisible(false);
     }
 
+    /**
+     * 初始化属性
+     */
     private void initAttributeSet(Context context, AttributeSet attrs) {
         TypedArray array = context.obtainStyledAttributes(attrs, R.styleable.PasswordEditText);
         // 获取大小
@@ -95,12 +106,15 @@ public class PasswordEditText extends EditText {
      */
     private void drawBg(Canvas canvas) {
         mPaint.setColor(mBgColor);
+        // 设置画笔为空心
         mPaint.setStyle(Paint.Style.STROKE);
         mPaint.setStrokeWidth(mBgSize);
         RectF rectF = new RectF(mBgSize, mBgSize, getWidth() - mBgSize, getHeight() - mBgSize);
-        if (mBgColor == 0) {
+        // 如果没有设置圆角，就画矩形
+        if (mBgCorner == 0) {
             canvas.drawRect(rectF, mPaint);
         } else {
+            // 如果有设置圆角就画圆矩形
             canvas.drawRoundRect(rectF, mBgCorner, mBgCorner, mPaint);
         }
     }
@@ -111,6 +125,7 @@ public class PasswordEditText extends EditText {
     private void drawHidePassword(Canvas canvas) {
         int passwordLength = getText().length();
         mPaint.setColor(mPasswordColor);
+        // 设置画笔为实心
         mPaint.setStyle(Paint.Style.FILL);
         for (int i = 0; i < passwordLength; i++) {
             int cx = i * mDivisionLineSize + i * mPasswordItemWidth + mPasswordItemWidth / 2 + mBgSize;
@@ -153,7 +168,6 @@ public class PasswordEditText extends EditText {
      */
     public void deleteLastPassword() {
         String currentText = getText().toString().trim();
-
         if (TextUtils.isEmpty(currentText)) {
             return;
         }

@@ -1,28 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/activity_main"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:padding="20dp"
-    android:orientation="vertical"
-    tools:context="com.hc.passwordedittext.MainActivity">
+    android:background="#FFFFFF"
+    android:layout_height="match_parent">
 
-
-    <com.hc.passwordedittext.PasswordEditText
-        android:id="@+id/password_et"
+    <ImageView
+        android:id="@+id/image_iv"
         android:layout_width="match_parent"
-        android:padding="10dp"
-        android:layout_marginTop="10dp"
-        app:passwordRadius="5dp"
-        android:layout_height="wrap_content"
-        android:background="@null"
-        app:bgCorner="3dp"/>
-
-    <com.hc.passwordedittext.CustomerKeyboard
-        android:layout_marginTop="10dp"
-        android:id="@+id/custom_keyboard"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
-</LinearLayout>
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:scaleType="fitXY"
+        android:src="@mipmap/image"
+        tools:context="com.hc.passwordedittext.MainActivity" />
+</RelativeLayout>
