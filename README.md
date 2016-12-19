@@ -4,7 +4,7 @@
 
 具体博客地址：http://blog.csdn.net/z240336124/article/details/53739790
 
-具体视频讲解: http://pan.baidu.com/s/1dENNO33
+具体视频讲解：http://pan.baidu.com/s/1dENNO33
 
 个人QQ：240336124
 
